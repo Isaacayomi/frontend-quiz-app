@@ -7,3 +7,9 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.background-dark {
+  background-image: url("/src/assets/images/patter-background-dark.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
