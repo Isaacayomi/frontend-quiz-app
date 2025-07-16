@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background {
+  background-image: url("/src/assets/images/pattern-background-desktop-light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
