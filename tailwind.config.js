@@ -12,6 +12,8 @@ export default {
       "dark-pattern-background":
         "url('/src/assets/images/patter-background-dark.svg)",
     },
+
+    darkMode: "selector",
   },
   plugins: [],
 };
