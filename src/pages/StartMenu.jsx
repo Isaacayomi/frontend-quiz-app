@@ -3,8 +3,12 @@ import CSS_ICON from "../assets/images/icon-css.svg";
 import JAVASCRIPT_ICON from "../assets/images/icon-js.svg";
 import ACCESSIBLITY_ICON from "../assets/images/icon-accessibility.svg";
 import Button from "../ui/Button";
+import { useDispatch } from "react-redux";
+import { selectedIndex, selectSubject } from "../features/QuestionSlice";
 
 function StartMenu() {
+  const dispatch = useDispatch();
+
   const subjects = ["HTML", "CSS", "JavaScript", "Accessibility"];
   const subjectIcons = [
     HTML_ICON,
@@ -25,8 +29,9 @@ function StartMenu() {
           to="questions"
           key={index}
           onClick={() => {
-            // dispatch(fetchQuestion(index));
-            // navigate("/questions");
+            dispatch(selectSubject(subject));
+            dispatch(selectedIndex(index));
+
             console.log(subjects[index]);
           }}
           bgClass={iconsBg[index]}

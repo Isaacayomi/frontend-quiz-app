@@ -7,10 +7,10 @@ import { useSelector } from "react-redux";
 function AppLayout() {
   const toggle = useSelector((state) => state.toggle.toggle);
   const { pathname } = useLocation();
-  console.log(pathname);
+
   return (
     <div
-      className={`min-h-screen sm:pl-[4rem] md:pl-0 ${toggle ? "background-dark dark:bg-[#313E51]" : "background bg-[#F4F6FA]"}`}
+      className={`min-h-screen transition-all sm:pl-[4rem] md:pl-0 ${toggle ? "background-dark dark:bg-[#313E51]" : "background bg-[#F4F6FA]"}`}
     >
       <div className="xl:mx-auto xl:max-w-[90rem]">
         <nav>
