@@ -1,5 +1,7 @@
+import LeftPane from "../ui/LeftPane";
+
 function QuestionsPage() {
-  return <div>Questions</div>;
+  return <div>hello</div>;
 }
 
 export default QuestionsPage;

@@ -1,7 +1,3 @@
-import ToggleButton from "../ui/ToggleButton";
-import WelcomeHeading from "../ui/WelcomeHeading";
-
-// import HTML_ICON from "../assets/images/icon-html.svg";
 import HTML_ICON from "../assets/images/icon-html.svg";
 import CSS_ICON from "../assets/images/icon-css.svg";
 import JAVASCRIPT_ICON from "../assets/images/icon-js.svg";
@@ -23,16 +19,22 @@ function StartMenu() {
     "bg-[#F6E7FF]",
   ];
   return (
-    <div className="h-screen lg:flex lg:items-center lg:justify-around">
-      <WelcomeHeading />
-
-      <div className="mx-auto w-full max-w-[35.25rem] lg:mx-0">
-        {subjects.map((subject, index) => (
-          <Button bgClass={iconsBg[index]} src={subjectIcons[index]}>
-            {subject}
-          </Button>
-        ))}
-      </div>
+    <div className="mx-auto w-full max-w-[35.25rem] lg:mx-0">
+      {subjects.map((subject, index) => (
+        <Button
+          to="questions"
+          key={index}
+          onClick={() => {
+            // dispatch(fetchQuestion(index));
+            // navigate("/questions");
+            console.log(subjects[index]);
+          }}
+          bgClass={iconsBg[index]}
+          src={subjectIcons[index]}
+        >
+          {subject}
+        </Button>
+      ))}
     </div>
   );
 }
