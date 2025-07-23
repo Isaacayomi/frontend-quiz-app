@@ -4,7 +4,11 @@ import JAVASCRIPT_ICON from "../assets/images/icon-js.svg";
 import ACCESSIBLITY_ICON from "../assets/images/icon-accessibility.svg";
 import Button from "../ui/Button";
 import { useDispatch } from "react-redux";
-import { selectedIndex, selectSubject } from "../features/QuestionSlice";
+import {
+  fetchQuestions,
+  selectedIndex,
+  selectSubject,
+} from "../features/QuestionSlice";
 
 function StartMenu() {
   const dispatch = useDispatch();
@@ -31,8 +35,9 @@ function StartMenu() {
           onClick={() => {
             dispatch(selectSubject(subject));
             dispatch(selectedIndex(index));
+            dispatch(fetchQuestions({ subject, subjectIndex: index }));
 
-            console.log(subjects[index]);
+            // console.log(subjects[index]);
           }}
           bgClass={iconsBg[index]}
           src={subjectIcons[index]}

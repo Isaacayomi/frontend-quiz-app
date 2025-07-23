@@ -1,10 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getQuestion } from "../services/apiGetQuestions";
 
 const initialState = {
   selectedSubject: "",
   selectedSubjectIcon: "",
   subjectIndex: null,
+  loading: false,
+  error: null,
+  questions: [],
+  questionIndex: 0,
 };
+
+export const fetchQuestions = createAsyncThunk(
+  "questions/fetchQuestions",
+  async ({ subject, subjectIndex }, thunkAPI) => {
+    try {
+      const subjectsQuestion = await getQuestion(subject, subjectIndex);
+      // console.log(subjectsQuestion);
+      return subjectsQuestion;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  },
+);
 
 const questionSlice = createSlice({
   name: "question",
@@ -13,6 +31,7 @@ const questionSlice = createSlice({
     selectSubject(state, action) {
       state.selectedSubject = action.payload;
     },
+
     selectSubjectIcon(state, action) {
       state.selectedSubjectIcon = action.payload;
     },
@@ -20,10 +39,34 @@ const questionSlice = createSlice({
     selectedIndex(state, action) {
       state.subjectIndex = action.payload;
     },
+    nextQuestion(state) {
+      if (
+        state.questions &&
+        state.questions.questions &&
+        state.questionIndex < state.questions.questions.length - 1
+      ) {
+        state.questionIndex += 1;
+      }
+    },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchQuestions.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(fetchQuestions.fulfilled, (state, action) => {
+      state.loading = false;
+      state.questions = action.payload;
+    });
+    builder.addCase(fetchQuestions.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+    });
   },
 });
 
 export default questionSlice.reducer;
 
-export const { selectSubject, selectSubjectIcon, selectedIndex } =
+export const { selectSubject, selectSubjectIcon, selectedIndex, nextQuestion } =
   questionSlice.actions;

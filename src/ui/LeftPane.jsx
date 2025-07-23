@@ -3,6 +3,11 @@ import { useSelector } from "react-redux";
 function LeftPane({ children, style }) {
   // state.toggle(name of the reducer).toggle(the toggle state in the reducer)
   const toggle = useSelector((state) => state.toggle.toggle);
+  const { questions: questionObject, status } = useSelector(
+    (state) => state.question || {},
+  );
+  const questionLength = questionObject?.questions?.length || 0;
+  const { questionIndex } = useSelector((state) => state.question);
 
   return (
     <div className="mx-auto mb-[2.5rem] w-full max-w-[17.6875rem] font-rubik sm:mx-0 sm:mb-[4rem] sm:max-w-[27.75rem] md:mx-auto lg:mx-0 lg:pl-1">
@@ -22,7 +27,10 @@ function LeftPane({ children, style }) {
             <p
               className={`${toggle ? "text-[#ABC1E1]" : "text-[#626C7F]"} md:pb-[3rem]lg:pt-0 pt-[2rem] text-[0.875rem] font-normal italic`}
             >
-              Question 6 of 10
+              {status === "loading"
+                ? "Loading..."
+                : `Questions ${questionIndex + 1} of  ${questionLength}`}
+              {/* Question 6 o f {questions.question?.length || 0} */}
             </p>
             <span
               style={style}
