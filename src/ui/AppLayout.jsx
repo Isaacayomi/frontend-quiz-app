@@ -14,14 +14,16 @@ function AppLayout() {
 
   return (
     <div
-      className={`min-h-screen transition-all sm:pl-[4rem] md:pl-0 ${toggle ? "background-dark dark:bg-[#313E51]" : "background bg-[#F4F6FA]"}`}
+      className={`min-h-screen w-full transition-all md:pl-0 ${
+        toggle ? "background-dark dark:bg-[#313E51]" : "background bg-[#F4F6FA]"
+      }`}
     >
       <div className="xl:mx-auto xl:max-w-[90rem]">
         <nav>
           <ToggleButton />
         </nav>
 
-        <main className="h-screen lg:flex lg:items-center lg:justify-around">
+        <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-around">
           {pathname === "/questions" ? (
             <LeftPane>
               {status === "loading"
@@ -29,9 +31,6 @@ function AppLayout() {
                 : questionObject?.questions?.[questionIndex]?.question
                   ? questionObject.questions[questionIndex].question
                   : "No question found"}
-
-              {/* Which of these color contrast ratios defines the minimum WCAG 2.1
-              Level AA requirement for normal text? */}
             </LeftPane>
           ) : (
             <LeftPane />

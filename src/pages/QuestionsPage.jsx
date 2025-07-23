@@ -17,18 +17,17 @@ function QuestionsPage() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <li className="list-none">
-        <OptionsList />
-      </li>
+      <OptionsList />
 
       <OptionsButton
+        className="mx-auto text-center"
         onClick={() => {
           dispatch(nextQuestion());
           console.log("Next question dispatched");
           console.log("Current subject index:", questionIndex);
         }}
       >
-        Next Question
+        <span>Next Question</span>
       </OptionsButton>
     </div>
   );
