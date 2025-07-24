@@ -9,6 +9,7 @@ const initialState = {
   error: null,
   questions: [],
   questionIndex: 0,
+  answerSelected: null,
 };
 
 export const fetchQuestions = createAsyncThunk(
@@ -39,6 +40,12 @@ const questionSlice = createSlice({
     selectedIndex(state, action) {
       state.subjectIndex = action.payload;
     },
+
+    selectedAnswer(state, action) {
+      state.answerSelected = action.payload;
+      console.log(state.answerSelected);
+    },
+
     nextQuestion(state) {
       if (
         state.questions &&
@@ -68,5 +75,10 @@ const questionSlice = createSlice({
 
 export default questionSlice.reducer;
 
-export const { selectSubject, selectSubjectIcon, selectedIndex, nextQuestion } =
-  questionSlice.actions;
+export const {
+  selectSubject,
+  selectSubjectIcon,
+  selectedIndex,
+  nextQuestion,
+  selectedAnswer,
+} = questionSlice.actions;

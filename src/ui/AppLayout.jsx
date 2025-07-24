@@ -35,7 +35,11 @@ function AppLayout() {
           ) : (
             <LeftPane />
           )}
-          <Outlet />
+          <div className="flex w-full justify-center lg:justify-end">
+            <div className="w-full lg:max-w-[40rem]">
+              <Outlet />
+            </div>
+          </div>
         </main>
       </div>
     </div>
