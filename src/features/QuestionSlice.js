@@ -17,7 +17,6 @@ export const fetchQuestions = createAsyncThunk(
   async ({ subject, subjectIndex }, thunkAPI) => {
     try {
       const subjectsQuestion = await getQuestion(subject, subjectIndex);
-      // console.log(subjectsQuestion);
       return subjectsQuestion;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
@@ -43,7 +42,6 @@ const questionSlice = createSlice({
 
     selectedAnswer(state, action) {
       state.answerSelected = action.payload;
-      console.log(state.answerSelected);
     },
 
     nextQuestion(state) {
@@ -54,6 +52,11 @@ const questionSlice = createSlice({
       ) {
         state.questionIndex += 1;
       }
+    },
+
+    reset(state) {
+      state.answerSelected = null;
+      // state.questionIndex = 0;
     },
   },
 
@@ -81,4 +84,5 @@ export const {
   selectedIndex,
   nextQuestion,
   selectedAnswer,
+  reset,
 } = questionSlice.actions;

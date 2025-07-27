@@ -23,7 +23,7 @@ function AppLayout() {
           <ToggleButton />
         </nav>
 
-        <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-around">
+        <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-around lg:gap-20">
           {pathname === "/questions" ? (
             <LeftPane>
               {status === "loading"
@@ -35,7 +35,7 @@ function AppLayout() {
           ) : (
             <LeftPane />
           )}
-          <div className="flex w-full justify-center lg:justify-end">
+          <div className="flex w-full justify-center lg:justify-end lg:pr-10">
             <div className="w-full lg:max-w-[40rem]">
               <Outlet />
             </div>
