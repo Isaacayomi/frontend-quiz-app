@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { nextQuestion, reset } from "../features/QuestionSlice";
-import OptionsButton from "./optionsButton";
+import OptionsButton from "./OptionsButton";
 import ErrorMessage from "./ErrorMessage";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import OptionsButton from "./optionsButton";
+import OptionsButton from "./OptionsButton";
 import { selectedAnswer } from "../features/QuestionSlice";
 import { useLocation } from "react-router-dom";
 import ICON_CORRECT from "../assets/images/icon-correct.svg";
