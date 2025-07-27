@@ -51,7 +51,7 @@ function OptionsList() {
                 dispatch(selectedAnswer(index));
               }
             }}
-            className={`${optionStyle} w-full px-0 py-[1.6rem] text-[1.125rem] font-medium lg:max-w-[35.25rem] lg:rounded-[1.5rem] ${toggle ? "dark:bg-[#3B4D66]" : "bg-white"}`}
+            className={`${optionStyle} px-0 py-[1.6rem] text-[1.125rem] font-medium lg:max-w-[35.25rem] lg:rounded-[1.5rem] ${toggle ? "dark:bg-[#3B4D66]" : "bg-white"}`}
           >
             <div className="flex items-center justify-start gap-[1rem] text-[1.125rem]">
               <span className="ml-[1rem] rounded-lg bg-[#F4F6FA] px-[1.1rem] py-[0.69rem] text-[#626C7F]">
@@ -68,7 +68,6 @@ function OptionsList() {
                     alt="icons"
                   />
                 )}
-                {/* {isCorrect ?} */}
               </span>
             </div>
           </OptionsButton>

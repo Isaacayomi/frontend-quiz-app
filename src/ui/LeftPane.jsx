@@ -32,10 +32,25 @@ function LeftPane({ children, style }) {
             </p>
             <span
               style={style}
-              className="text-balance break-words pt-[0.5rem] text-[1.25rem] font-medium leading-[0.5rem] sm:block sm:leading-[1.5rem] lg:w-full lg:text-[2.25rem] lg:leading-[2.7rem]"
+              className="text-balance break-words pt-[0.5rem] text-[1.25rem] font-medium leading-[0.5rem] sm:block sm:leading-[1.5rem] lg:mb-[10rem] lg:w-full lg:text-[2.25rem] lg:leading-[2.7rem]"
             >
               {children}
             </span>
+
+            <div
+              className={`max-w-[20.4375rem] w-full${toggle ? "bg-[#3B4D66]" : "bg-white"} mt-[1.5rem] h-4 w-full overflow-hidden rounded-full bg-gray-200 p-1`}
+            >
+              <div
+                className={`h-full rounded-full bg-[#A729F5] transition-all duration-300`}
+                style={{
+                  width: `${((questionIndex + 1) / questionLength) * 100}%`,
+                }}
+              />
+            </div>
+
+            {/* <progress max={20} value={questionLength} /> */}
+
+            {/* <form */}
           </>
         )}
       </h1>

@@ -18,22 +18,33 @@ function NextButton() {
 
   return (
     <>
-      <OptionsButton
-        to={lastQuestion ? "/score" : "/options"}
-        className="mx-auto w-full text-center hover:bg-[#a729f56e] lg:max-w-[35.25rem]"
-        onClick={() => {
-          if (answerSelected === null) {
-            setShowError(true);
-            return;
-          } else {
-            setShowError(false);
-            dispatch(nextQuestion());
-            dispatch(reset());
-          }
-        }}
-      >
-        <span>{lastQuestion ? "Submit" : "Next Question"}</span>
-      </OptionsButton>
+      {questionLength !== 0 && (
+        <OptionsButton
+          to={lastQuestion ? "/score" : "/options"}
+          className="mx-auto w-full text-center hover:bg-[#a729f56e] lg:max-w-[35.25rem]"
+          onClick={() => {
+            if (answerSelected === null) {
+              setShowError(true);
+              return;
+            } else {
+              setShowError(false);
+              dispatch(nextQuestion());
+              dispatch(reset());
+            }
+          }}
+        >
+          <span>{lastQuestion ? "Submit" : "Next Question"}</span>
+        </OptionsButton>
+      )}
+
+      {questionLength === 0 && (
+        <OptionsButton
+          to={questionLength === 0 && "/"}
+          className="mx-auto w-full text-center hover:bg-[#a729f56e] lg:max-w-[35.25rem]"
+        >
+          BACK TO START MENU
+        </OptionsButton>
+      )}
 
       {showError && <ErrorMessage />}
     </>
