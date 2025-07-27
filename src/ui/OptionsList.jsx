@@ -47,7 +47,7 @@ function OptionsList() {
             key={index}
             disabled={isDisabled}
             onClick={() => {
-              if (location.pathname === "/questions") {
+              if (location.pathname === "/options") {
                 dispatch(selectedAnswer(index));
               }
             }}

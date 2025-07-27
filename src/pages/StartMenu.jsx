@@ -30,7 +30,7 @@ function StartMenu() {
     <div className="mx-auto w-full max-w-[35.25rem] lg:mx-0">
       {subjects.map((subject, index) => (
         <Button
-          to="questions"
+          to="options"
           key={index}
           onClick={() => {
             dispatch(selectSubject(subject));

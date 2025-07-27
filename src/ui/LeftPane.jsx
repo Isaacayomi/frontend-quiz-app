@@ -10,7 +10,7 @@ function LeftPane({ children, style }) {
   const { questionIndex } = useSelector((state) => state.question);
 
   return (
-    <div className="mx-auto mb-[2.5rem] w-full max-w-[17.6875rem] font-rubik sm:mx-0 sm:mb-[4rem] sm:max-w-[27.75rem] sm:pl-[4rem] md:mx-auto md:pl-0 lg:mx-0 lg:pl-[4rem]">
+    <div className="mx-auto mb-[2.5rem] w-full max-w-[17.6875rem] font-rubik sm:mx-0 sm:mb-[4rem] sm:max-w-[27.75rem] sm:pl-[4rem] md:mx-auto md:pl-0 lg:mx-0 lg:w-full lg:max-w-[29.0625rem] lg:pl-[4rem]">
       <h1
         className={`mb-[1rem] block text-[2.5rem] font-[300] leading-[100%] sm:w-full sm:whitespace-nowrap sm:text-[4rem] sm:font-[300] md:ml-[-5rem] lg:mb-[3rem] lg:ml-0 ${toggle ? "text-white" : "dark:text-[#313E51]"}`}
       >
@@ -30,11 +30,10 @@ function LeftPane({ children, style }) {
               {status === "loading"
                 ? "Loading..."
                 : `Questions ${questionIndex + 1} of  ${questionLength}`}
-              {/* Question 6 o f {questions.question?.length || 0} */}
             </p>
             <span
               style={style}
-              className="text-balance break-words pt-[0.5rem] text-[1.25rem] font-medium leading-[0.5rem] sm:block sm:leading-[1.5rem]"
+              className="text-balance break-words pt-[0.5rem] text-[1.25rem] font-medium leading-[0.5rem] sm:block sm:leading-[1.5rem] lg:w-full lg:text-[2.25rem] lg:leading-[2.7rem]"
             >
               {children}
             </span>

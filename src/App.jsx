@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import StartMenu from "./pages/StartMenu";
-import QuestionsPage from "./pages/QuestionsPage";
+import Options from "./ui/Options";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,8 +14,8 @@ function App() {
         },
 
         {
-          path: "/questions",
-          element: <QuestionsPage />,
+          path: "/options",
+          element: <Options />,
         },
       ],
     },
