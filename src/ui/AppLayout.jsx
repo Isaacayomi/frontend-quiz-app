@@ -24,27 +24,26 @@ function AppLayout() {
         </nav>
 
         <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-center lg:gap-20">
-          {pathname === "/options" ? (
-            <LeftPane>
-              {status === "loading"
-                ? "Loading..."
-                : questionObject?.questions?.[questionIndex]?.question
-                  ? questionObject.questions[questionIndex].question
-                  : "No question found"}
-            </LeftPane>
-          ) : (
-            <LeftPane />
+          {pathname !== "/score" && (
+            <div>
+              {pathname === "/options" ? (
+                <LeftPane>
+                  {status === "loading"
+                    ? "Loading..."
+                    : questionObject?.questions?.[questionIndex]?.question
+                      ? questionObject.questions[questionIndex].question
+                      : "No question found"}
+                </LeftPane>
+              ) : (
+                <LeftPane />
+              )}
+            </div>
           )}
           <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
             <div className="mx-auto w-full max-w-[40rem]">
               <Outlet />
             </div>
           </div>
-          {/* <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
-            <div className="w-full lg:max-w-[40rem]">
-              <Outlet />
-            </div>
-          </div> */}
         </main>
       </div>
     </div>

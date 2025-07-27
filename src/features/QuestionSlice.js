@@ -56,7 +56,6 @@ const questionSlice = createSlice({
 
     reset(state) {
       state.answerSelected = null;
-      // state.questionIndex = 0;
     },
   },
 

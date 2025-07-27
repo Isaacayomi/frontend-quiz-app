@@ -23,7 +23,6 @@ function LeftPane({ children, style }) {
           </>
         ) : (
           <>
-            {/* #626C7F */}
             <p
               className={`${toggle ? "text-[#ABC1E1]" : "text-[#626C7F]"} md:pb-[3rem]lg:pt-0 pt-[2rem] text-[0.875rem] font-normal italic`}
             >

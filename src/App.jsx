@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import StartMenu from "./pages/StartMenu";
 import Options from "./ui/Options";
+import ScorePage from "./pages/ScorePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +17,10 @@ function App() {
         {
           path: "/options",
           element: <Options />,
+        },
+        {
+          path: "/score",
+          element: <ScorePage />,
         },
       ],
     },
