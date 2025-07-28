@@ -10,16 +10,27 @@ function ScoreBoard() {
   );
   const questionLength = questionObject?.questions?.length || 0;
   const { totalCorrectAnswers } = useSelector((state) => state.question);
+  const { selectedSubject, selectedSubjectIcon } = useSelector(
+    (state) => state.question,
+  );
+  const { toggle } = useSelector((state) => state.toggle);
+  console.log(selectedSubject, selectedSubjectIcon);
 
   return (
-    <div className="mx-auto w-full max-w-[20.4375rem] bg-white font-medium text-[#313E51]">
+    <div
+      className={`${
+        toggle ? "text-white dark:bg-[#3B4D66]" : "bg-white"
+      } w-full rounded-[0.75rem] bg-white p-6 font-rubik font-medium text-[#313E51] md:p-12`}
+    >
       <div className="flex items-start justify-center gap-[1rem] rounded-xl pt-[2rem]">
-        <img src={HTML_ICON} alt="Subject icon" />
-        <span className="pt-1">HTML</span>
+        <img src={selectedSubjectIcon} alt="Subject icon" />
+        <span className="pt-1">{selectedSubject}</span>
       </div>
 
       <div className="flex flex-col items-center justify-center gap-[-1rem] pb-[2rem]">
-        <span className="text-[6.5rem] text-[#313E51]">
+        <span
+          className={`${toggle ? "text-white" : "text-[#313E51]"} text-[6.5rem]`}
+        >
           {totalCorrectAnswers}
         </span>
         <span className="text-[#626C7F) text-[1.125rem]">

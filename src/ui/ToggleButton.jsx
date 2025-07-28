@@ -36,7 +36,7 @@ function ToggleButton() {
 
   return (
     <div
-      className={`mb-[1.5rem] flex justify-between pt-[1.62rem] ${!gameScreen ? "mr-[1.5rem]" : "mx-[1.5rem]"}`}
+      className={`mb-[1.5rem] flex justify-between pt-[1.62rem] md:px-[2rem] ${!gameScreen ? "mr-[1.5rem]" : "mx-[1.5rem]"}`}
     >
       {gameScreen && (
         <div

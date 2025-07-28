@@ -65,19 +65,6 @@ function OptionsList() {
               if (location.pathname === "/options") {
                 dispatch(selectedAnswer(index));
               }
-
-              // if (isSelected && isCorrect) {
-              //   dispatch(increaseScore());
-              //   console.log(totalCorrectAnswers);
-              // }
-
-              // if (isCorrect) {
-              //   console.log("correct");
-              //   // dispatch(increaseScore());
-              //   // console.log(totalCorrectAnswer);
-              // } else {
-              //   console.log("wrong");
-              // }
             }}
             className={`${optionStyle} px-0 py-[1.6rem] text-[1.125rem] font-medium lg:max-w-[35.25rem] lg:rounded-[1.5rem] ${toggle ? "dark:bg-[#3B4D66]" : "bg-white"}`}
           >
