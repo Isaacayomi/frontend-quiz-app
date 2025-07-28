@@ -10,14 +10,13 @@ function OptionsList() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const { questions: questionObject } = useSelector(
-    (state) => state.question || {},
-  );
-
-  const { questionIndex } = useSelector((state) => state.question);
+  const {
+    questions: questionObject,
+    questionIndex,
+    answerSelected,
+  } = useSelector((state) => state.question || {});
 
   const { toggle } = useSelector((state) => state.toggle);
-  const { answerSelected } = useSelector((state) => state.question);
 
   // answer from the data.json
   const answer = questionObject?.questions?.[questionIndex]?.answer;

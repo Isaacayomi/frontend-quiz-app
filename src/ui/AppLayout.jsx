@@ -6,10 +6,11 @@ import LeftPane from "./LeftPane";
 function AppLayout() {
   const { pathname } = useLocation();
   const toggle = useSelector((state) => state.toggle.toggle);
-  const { questions: questionObject, status } = useSelector(
-    (state) => state.question || {},
-  );
-  const { questionIndex } = useSelector((state) => state.question);
+  const {
+    questions: questionObject,
+    status,
+    questionIndex,
+  } = useSelector((state) => state.question || {});
 
   return (
     <div

@@ -14,7 +14,6 @@ function ScoreBoard() {
     (state) => state.question,
   );
   const { toggle } = useSelector((state) => state.toggle);
-  console.log(selectedSubject, selectedSubjectIcon);
 
   return (
     <div
