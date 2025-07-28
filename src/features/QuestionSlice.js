@@ -10,6 +10,7 @@ const initialState = {
   questions: [],
   questionIndex: 0,
   answerSelected: null,
+  totalCorrectAnswers: 0,
 };
 
 export const fetchQuestions = createAsyncThunk(
@@ -54,8 +55,16 @@ const questionSlice = createSlice({
       }
     },
 
+    increaseScore(state) {
+      state.totalCorrectAnswers = state.totalCorrectAnswers + 1;
+    },
+
     reset(state) {
       state.answerSelected = null;
+    },
+
+    resetQuiz() {
+      return initialState;
     },
   },
 
@@ -83,5 +92,7 @@ export const {
   selectedIndex,
   nextQuestion,
   selectedAnswer,
+  increaseScore,
   reset,
+  resetQuiz,
 } = questionSlice.actions;

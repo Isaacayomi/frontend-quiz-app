@@ -26,7 +26,8 @@ function ToggleButton() {
   ];
 
   const location = useLocation();
-  const options = location.pathname === "/options";
+  const gameScreen =
+    location.pathname === "/options" || location.pathname === "/score";
   const dispatch = useDispatch();
   const toggle = useSelector((state) => state.toggle.toggle);
   const { selectedSubject, subjectIndex } = useSelector(
@@ -35,9 +36,9 @@ function ToggleButton() {
 
   return (
     <div
-      className={`mb-[1.5rem] flex justify-between pt-[1.62rem] ${!options ? "mr-[1.5rem]" : "mx-[1.5rem]"}`}
+      className={`mb-[1.5rem] flex justify-between pt-[1.62rem] ${!gameScreen ? "mr-[1.5rem]" : "mx-[1.5rem]"}`}
     >
-      {options && (
+      {gameScreen && (
         <div
           className={`${iconsBg[subjectIndex]} flex h-[1.8rem] w-[1.8rem] items-center gap-[1rem] rounded-md`}
         >
@@ -55,7 +56,7 @@ function ToggleButton() {
       )}
 
       <div
-        className={`flex items-center gap-2 ${!options ? "ml-auto justify-end" : "justify-end"}`}
+        className={`flex items-center gap-2 ${!gameScreen ? "ml-auto justify-end" : "justify-end"}`}
       >
         <img
           src={toggle ? SUN_ICON_LIGHT : SUN_ICON}

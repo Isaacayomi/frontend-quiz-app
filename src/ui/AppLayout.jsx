@@ -1,8 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ToggleButton from "./ToggleButton";
 import LeftPane from "./LeftPane";
-import StartMenu from "../pages/StartMenu";
-import { useSelector } from "react-redux";
 
 function AppLayout() {
   const { pathname } = useLocation();
