@@ -5,14 +5,13 @@ import ACCESSIBLITY_ICON from "../assets/images/icon-accessibility.svg";
 import { useSelector } from "react-redux";
 
 function ScoreBoard() {
-  const { questions: questionObject } = useSelector(
-    (state) => state.question || {},
-  );
+  const {
+    questions: questionObject,
+    totalCorrectAnswers,
+    selectedSubject,
+    selectedSubjectIcon,
+  } = useSelector((state) => state.question || {});
   const questionLength = questionObject?.questions?.length || 0;
-  const { totalCorrectAnswers } = useSelector((state) => state.question);
-  const { selectedSubject, selectedSubjectIcon } = useSelector(
-    (state) => state.question,
-  );
   const { toggle } = useSelector((state) => state.toggle);
 
   return (
@@ -32,7 +31,7 @@ function ScoreBoard() {
         >
           {totalCorrectAnswers}
         </span>
-        <span className="text-[#626C7F) text-[1.125rem]">
+        <span className="text-[1.125rem] text-[#626C7F]">
           out of {questionLength}
         </span>
       </div>
