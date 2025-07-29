@@ -23,28 +23,32 @@ function AppLayout() {
           <ToggleButton />
         </nav>
 
-        <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-center lg:gap-20">
-          {pathname !== "/score" && (
-            <div>
-              {pathname === "/options" ? (
-                <LeftPane>
-                  {status === "loading"
-                    ? "Loading..."
-                    : questionObject?.questions?.[questionIndex]?.question
-                      ? questionObject.questions[questionIndex].question
-                      : "No question found"}
-                </LeftPane>
-              ) : (
-                <LeftPane />
-              )}
+        {status === "loading" ? (
+          "loading..."
+        ) : (
+          <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-center lg:gap-20">
+            {pathname !== "/score" && (
+              <div>
+                {pathname === "/options" ? (
+                  <LeftPane>
+                    {status === "loading"
+                      ? "Loading..."
+                      : questionObject?.questions?.[questionIndex]?.question
+                        ? questionObject.questions[questionIndex].question
+                        : "No question found"}
+                  </LeftPane>
+                ) : (
+                  <LeftPane />
+                )}
+              </div>
+            )}
+            <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
+              <div className="mx-auto w-full max-w-[40rem]">
+                <Outlet />
+              </div>
             </div>
-          )}
-          <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
-            <div className="mx-auto w-full max-w-[40rem]">
-              <Outlet />
-            </div>
-          </div>
-        </main>
+          </main>
+        )}
       </div>
     </div>
   );
