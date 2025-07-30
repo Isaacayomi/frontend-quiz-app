@@ -11,8 +11,10 @@ export async function getQuestion(subject, index) {
   if (!res.ok) throw new Error("Failed to fetch questions");
 
   const data = await res.json();
+  console.log("Fetched data:", data);
 
   const filtered = data.filter((q) => q.subject === subject);
+  console.log("Filtered questions:", filtered);
 
   return filtered[index];
 }
