@@ -6,22 +6,18 @@
 //   return data[index];
 // }
 
-export async function getQuestion(subject, index) {
+export async function getQuestion(subject) {
   const res = await fetch("/quizzes.json");
   if (!res.ok) throw new Error("Failed to fetch questions");
 
   const data = await res.json();
+  console.log("Fetched data:", data);
+
   const filtered = data.filter(
-    (q) => q.subject && q.subject.toLowerCase() === subject.toLowerCase(),
+    (q) => q.subject.toLowerCase() === subject.toLowerCase(),
   );
 
-  if (filtered.length === 0) {
-    throw new Error(`No questions found for subject: ${subject}`);
-  }
+  console.log("Filtered questions:", filtered);
 
-  if (index < 0 || index >= filtered.length) {
-    throw new Error(`Index ${index} is out of bounds for subject ${subject}`);
-  }
-
-  return filtered[index];
+  return filtered; // ✅ Return all questions for that subject
 }
