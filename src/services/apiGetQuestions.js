@@ -14,7 +14,7 @@ export async function getQuestion(subject, index) {
   console.log("Fetched data:", data);
 
   const filtered = data.filter(
-    (q) => q.subject.toLowerCase() === subject.toLowerCase(),
+    (q) => q.subject && q.subject.toLowerCase() === subject.toLowerCase(),
   );
 
   console.log("Filtered questions:", filtered);
