@@ -13,7 +13,10 @@ export async function getQuestion(subject, index) {
   const data = await res.json();
   console.log("Fetched data:", data);
 
-  const filtered = data.filter((q) => q.subject === subject);
+  const filtered = data.filter(
+    (q) => q.subject.toLowerCase() === subject.toLowerCase(),
+  );
+
   console.log("Filtered questions:", filtered);
 
   return filtered[index];
