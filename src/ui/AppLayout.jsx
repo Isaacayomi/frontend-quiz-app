@@ -33,15 +33,18 @@ function AppLayout() {
                   <LeftPane>
                     {status === "loading"
                       ? "Loading..."
-                      : questionObject?.questions?.[questionIndex]?.question
-                        ? questionObject.questions[questionIndex].question
-                        : "No question found"}
+                      : status === "error"
+                        ? "Failed to load question"
+                        : questionObject?.questions?.[questionIndex]?.question
+                          ? questionObject.questions[questionIndex].question
+                          : "No question found"}
                   </LeftPane>
                 ) : (
                   <LeftPane />
                 )}
               </div>
             )}
+
             <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
               <div className="mx-auto w-full max-w-[40rem]">
                 <Outlet />
