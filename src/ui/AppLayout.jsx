@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ToggleButton from "./ToggleButton";
 import LeftPane from "./LeftPane";
+import Loader from "./Loader";
 
 function AppLayout() {
   const { pathname } = useLocation();
@@ -31,13 +32,15 @@ function AppLayout() {
               <div>
                 {pathname === "/options" ? (
                   <LeftPane>
-                    {status === "loading"
-                      ? "Loading..."
-                      : status === "error"
-                        ? "Failed to load question"
-                        : questionObject?.questions?.[questionIndex]?.question
-                          ? questionObject.questions[questionIndex].question
-                          : "No question found"}
+                    {status === "loading" ? (
+                      <Loader />
+                    ) : status === "error" ? (
+                      "Failed to load question"
+                    ) : questionObject?.questions?.[questionIndex]?.question ? (
+                      questionObject.questions[questionIndex].question
+                    ) : (
+                      "No question found"
+                    )}
                   </LeftPane>
                 ) : (
                   <LeftPane />
