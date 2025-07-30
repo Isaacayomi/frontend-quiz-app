@@ -11,13 +11,17 @@ export async function getQuestion(subject, index) {
   if (!res.ok) throw new Error("Failed to fetch questions");
 
   const data = await res.json();
-  console.log("Fetched data:", data);
-
   const filtered = data.filter(
     (q) => q.subject && q.subject.toLowerCase() === subject.toLowerCase(),
   );
 
-  console.log("Filtered questions:", filtered);
+  if (filtered.length === 0) {
+    throw new Error(`No questions found for subject: ${subject}`);
+  }
+
+  if (index < 0 || index >= filtered.length) {
+    throw new Error(`Index ${index} is out of bounds for subject ${subject}`);
+  }
 
   return filtered[index];
 }
