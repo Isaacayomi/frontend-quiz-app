@@ -9,7 +9,7 @@ function AppLayout() {
   const toggle = useSelector((state) => state.toggle.toggle);
   const {
     questions: questionObject,
-    status,
+    loading,
     questionIndex,
   } = useSelector((state) => state.question || {});
 
@@ -24,37 +24,31 @@ function AppLayout() {
           <ToggleButton />
         </nav>
 
-        {status === "loading" ? (
-          "loading..."
-        ) : (
-          <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-center lg:gap-20">
-            {pathname !== "/score" && (
-              <div>
-                {pathname === "/options" ? (
-                  <LeftPane>
-                    {status === "loading" ? (
-                      <Loader />
-                    ) : status === "error" ? (
-                      "Failed to load question"
-                    ) : questionObject?.questions?.[questionIndex]?.question ? (
-                      questionObject.questions[questionIndex].question
-                    ) : (
-                      "No question found"
-                    )}
-                  </LeftPane>
-                ) : (
-                  <LeftPane />
-                )}
-              </div>
-            )}
-
-            <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
-              <div className="mx-auto w-full max-w-[40rem]">
-                <Outlet />
-              </div>
+        <main className="min-h-screen w-full lg:flex lg:items-center lg:justify-center lg:gap-20">
+          {pathname !== "/score" && (
+            <div>
+              {pathname === "/options" ? (
+                <LeftPane>
+                  {loading ? (
+                    <Loader />
+                  ) : questionObject?.questions?.[questionIndex]?.question ? (
+                    questionObject.questions[questionIndex].question
+                  ) : (
+                    "No question found"
+                  )}
+                </LeftPane>
+              ) : (
+                <LeftPane />
+              )}
             </div>
-          </main>
-        )}
+          )}
+
+          <div className="flex w-full justify-center lg:justify-normal lg:pr-10">
+            <div className="mx-auto w-full max-w-[40rem]">
+              <Outlet />
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ function NextButton() {
     questionIndex,
     questions: questionObject,
     answerSelected,
+    loading,
   } = useSelector((state) => state.question);
 
   const questionLength = questionObject?.questions?.length || 0;
@@ -49,7 +50,7 @@ function NextButton() {
         </OptionsButton>
       )}
 
-      {questionLength === 0 && (
+      {questionLength === 0 && loading === false && (
         <OptionsButton
           to="/"
           className="mx-auto w-full text-center hover:bg-[#a729f56e] lg:max-w-[35.25rem]"
